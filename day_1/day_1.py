@@ -27,13 +27,10 @@ print(total_distance) # 2285373
 # --- Part 2 -------------------------------------------------------------------------------- 
 similarity_score = 0
 i = 0
-#ll_id_frequency = {}
 rl_id_frequency = {}
 
 # Compute id's frequencies in left and right lists
 for i in range (0,len(left_list)):
-    #ll_id_frequency.setdefault(left_list[i], 0)
-    #ll_id_frequency[left_list[i]] += 1
     rl_id_frequency.setdefault(right_list[i], 0)
     rl_id_frequency[right_list[i]] += 1
 
