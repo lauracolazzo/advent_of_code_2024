@@ -50,7 +50,7 @@ safe_levels_count = 0
 def is_line_safe_with_one_error_tolerance(line_elements):
     i = 0
     is_line_valid = True
-    is_level_ascending = None
+    is_order_ascending = None
 
     # Iterate over elements in the line
     while i < len(line_elements)-1 and is_line_valid:
@@ -58,11 +58,11 @@ def is_line_safe_with_one_error_tolerance(line_elements):
         next_level = int(line_elements[i+1])
 
         # Determine the ordering of the first 2 elements
-        if is_level_ascending == None:
-            is_level_ascending = is_ascending_sequence(curr_level,next_level)
+        if is_order_ascending == None:
+            is_order_ascending = is_ascending_sequence(curr_level,next_level)
         
         # Check the ordering is consistent across the line 
-        elif is_ascending_sequence(curr_level,next_level) != is_level_ascending:
+        elif is_ascending_sequence(curr_level,next_level) != is_order_ascending:
             # Check if the line can still be considered safe by introducing 1 error tolerance
             line_elements.remove(line_elements[i+1])
             if is_line_safe(line_elements[i:]):
