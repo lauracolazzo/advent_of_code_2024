@@ -47,6 +47,10 @@ print(safe_lines_count) # 279
 # --- Part 2 -------------------------------------------------------------------------------- 
 safe_lines_count = 0
 
+def check_line_validity_without_next_el(line_elements,i):
+    line_elements.remove(line_elements[i+1])
+    return is_line_safe(line_elements[i:])
+
 def is_line_safe_with_one_error_tolerance(line_elements):
     i = 0
     is_line_valid = True
@@ -64,8 +68,7 @@ def is_line_safe_with_one_error_tolerance(line_elements):
         # Check the ordering is consistent across the line 
         elif is_ascending_sequence(curr_level,next_level) != is_order_ascending:
             # Check if the line can still be considered safe by introducing 1 error tolerance
-            line_elements.remove(line_elements[i+1])
-            is_line_valid = is_line_safe(line_elements[i:])
+            is_line_valid = check_line_validity_without_next_el(line_elements,i)
             break
         # Compute the delta between 2 adjacent elements
         delta = abs(curr_level - next_level)
@@ -74,8 +77,7 @@ def is_line_safe_with_one_error_tolerance(line_elements):
             i += 1
         else:
             # Check if the delta can still be considered safe by introducing 1 error tolerance
-            line_elements.remove(line_elements[i+1])
-            is_line_valid = is_line_safe(line_elements[i:])
+            is_line_valid = check_line_validity_without_next_el(line_elements,i)
             break
     return is_line_valid
 
