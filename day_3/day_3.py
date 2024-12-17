@@ -2,7 +2,7 @@ import re
 input = open('input_3.txt', 'r').read()
 
 # -- Part 1 --
-mul_pattern = r"mul\([1-9]\d*,[1-9]\d*\)"
+mul_pattern = r"mul\([1-9]\d*,[1-9]\d*\)" # e.g. mul(12,3), mul(4,5)
 matches = re.findall(mul_pattern,input)
 
 def mul_result_from_command(mul_command):
